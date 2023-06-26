@@ -1,0 +1,12 @@
+.imagenbody {
+    background-image: url(fondobodyfinal.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    height: 100vh;
+    min-height: 350px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-backgraund-size: cover;
+  }
