@@ -20,8 +20,6 @@ public class ClientesController : Controller
 
     public IActionResult Index()
     {
-        var cliente = _contexto.Clientes.Where(c => c.Eliminado == false).ToList();
-        // ViewBag.CategoriaID = new SelectList(cliente, "CategoriaID", "Descripcion");
         return View();
     }
 
@@ -91,6 +89,64 @@ public class ClientesController : Controller
 
             }
         }
+
+        return Json(resultado);
+    }
+
+
+    public JsonResult EliminarCliente(int clienteID, int eliminado)
+    {
+        // int resultado = 0;
+        var clientes = _contexto.Clientes.Find(clienteID);
+        if (clientes != null)
+        {
+            if (eliminado == 0)
+            {
+                clientes.Eliminado = true;
+                _contexto.Clientes.Remove(clientes);
+                _contexto.SaveChanges();
+                _contexto.Update(clientes);
+            }
+            else
+            {
+                if (eliminado == 0)
+                {
+                    clientes.Eliminado = false;
+                    _contexto.SaveChanges();
+                }
+                else
+                {
+                }
+            }
+        }
+
+        return Json(clientes);
+    }
+
+
+
+    public JsonResult DesahabilitarCliente(int clienteID, int eliminado)
+    {
+        int resultado = 0;
+        var cliente = _contexto.Clientes.Find(clienteID);
+        if (cliente != null)
+        {
+            if (eliminado == 0)
+            {
+                cliente.Eliminado = false;
+                _contexto.SaveChanges();
+            }
+            else
+            {
+                if (eliminado == 1)
+                {
+                    cliente.Eliminado = true;
+                    _contexto.SaveChanges();
+                }
+            }
+        }
+
+        resultado = 1;
 
         return Json(resultado);
     }

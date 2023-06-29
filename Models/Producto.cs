@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProyectoFinal.Models;
 
@@ -15,15 +16,18 @@ public class Producto
 
     public int Cantidad { get; set; }
 
-    public byte[]? Foto { get; set; }
-    public string? TipoDeImagen { get; set; }
-    public string? NombreDeImagen { get; set; }
+
+    // public byte[]? Foto { get; set; }
+    // public string? TipoDeImagen { get; set; }
+    // public string? NombreDeImagen { get; set; }
+
 
     public Disponibilidad Disponible { get; set; }
 
     public bool Eliminado { get; set; }
 
-
+    [NotMapped]
+    public string? ImagenBase64 { get; set; }
 
     // public virtual ICollection<Pedido>? Pedidos { get; set; }
 

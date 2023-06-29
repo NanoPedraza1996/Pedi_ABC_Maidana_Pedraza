@@ -19,18 +19,18 @@ function BuscarClientes() {
             $("#tbody-Clientes").empty();
             $.each(clientes, function (Index, cliente) {
                 //VARIABLES PARA DEFINIR BOTONES Y ESTETICA
-                let BotonDesahabilitar = '';
+                let botonDesahabilitar = '';
                 let botones = '<button type="button" onclick="BuscarCliente(' + cliente.clienteID + ')" class="btn btn-primary btn-sm" style="margin-right:5px" onkeyup="this.value = this.value.toUpperCase()">Editar</button>' +
                 '<button type="button" onclick="EliminarCliente(' + cliente.clienteID + ')" class="btn btn-danger btn-sm" style="margin-right:5px">Eliminar</button>' +
                 '<button type="button" onclick="DesahabilitarCliente(' + cliente.clienteID + ',1)" class="btn btn-danger btn-sm">Desahabilitar</button>';
                 //DEFINE SI ESTA ELIMINADA
                 if (cliente.eliminar) {
-                    BotonDesahabilitar = 'table-danger';
+                    botonDesahabilitar = 'table-danger';
                     botones = '<button type="button" onclick="DesahabilitarCliente(' + cliente.clienteID + ',0)" class="btn btn-warning btn-sm">Activar</button>';
                 }
                 
-                $("#tbody-Clientes").append('<tr class=' + BotonDesahabilitar + ' "tr">' 
-                + '<td class="yellow">' + cliente.nombreApellido + '</td>' 
+                $("#tbody-Clientes").append('<tr class=' + botonDesahabilitar + ' "tr">' 
+                + '<td>' + cliente.nombreApellido + '</td>' 
                 + '<td>' + cliente.direccion + '</td>' 
                 + '<td>' + cliente.Telefono + '</td>'
                 + '<td class="text-center">' + botones + '</td>' + '</tr>');
@@ -62,9 +62,11 @@ function BuscarClientes() {
 
 
 function BuscarCliente(clienteID) {
+    $("#staticBackdropLabel").text("Editar Servicio");
+    $("#ClienteID").val(clienteID);
     $.ajax({
         // la URL para la petición
-        url: '../../Cliente/BuscarClientes',
+        url: '../../Clientes/BuscarClientes',
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         data: { clienteID: clienteID },
@@ -76,7 +78,7 @@ function BuscarCliente(clienteID) {
         // la respuesta es pasada como argumento a la función
         success: function (clientes) {
 
-            if (categorias.length == 1) {
+            if (clientes.length == 1) {
                 let cliente = clientes[0];
                 $("#NombreApellido").val(cliente.nombreApellido);
                 $("#Direccion").val(cliente.direccion);
@@ -145,4 +147,68 @@ function GuardarCliente() {
             alert('Disculpe, existió un problema');
         }
     });
+}
+
+
+function EliminarCliente(clienteID, eliminado) {
+    $.ajax({
+        // la URL para la petición
+        url: '../../Clientes/EliminarCliente',
+        // la información a enviar
+        // (también es posible utilizar una cadena de datos)
+        data: { ClienteID: clienteID, Eliminado: eliminado },
+        // especifica si será una petición POST o GET
+        type: 'POST',
+        // el tipo de información que se espera de respuesta
+        dataType: 'json',
+        // código a ejecutar si la petición es satisfactoria;
+        // la respuesta es pasada como argumento a la función
+        success: function (resultado) {
+            if (resultado) {
+                BuscarClientes();
+
+            }
+        },
+
+        // código a ejecutar si la petición falla;
+        // son pasados como argumentos a la función
+        // el objeto de la petición en crudo y código de estatus de la petición
+        error: function (xhr, status) {
+            alert('Disculpe, existió un problema');
+        }
+
+    });
+
+}
+
+
+function DesahabilitarCliente(clienteID, eliminado) {
+    $.ajax({
+        // la URL para la petición
+        url: '../../Clientes/DesahabilitarCliente',
+        // la información a enviar
+        // (también es posible utilizar una cadena de datos)
+        data: { ClienteID: clienteID, Eliminado: eliminado },
+        // especifica si será una petición POST o GET
+        type: 'POST',
+        // el tipo de información que se espera de respuesta
+        dataType: 'json',
+        // código a ejecutar si la petición es satisfactoria;
+        // la respuesta es pasada como argumento a la función
+        success: function (resultado) {
+            if (resultado) {
+                BuscarClientes();
+
+            }
+        },
+
+        // código a ejecutar si la petición falla;
+        // son pasados como argumentos a la función
+        // el objeto de la petición en crudo y código de estatus de la petición
+        error: function (xhr, status) {
+            alert('Disculpe, existió un problema');
+        }
+
+    });
+
 }
