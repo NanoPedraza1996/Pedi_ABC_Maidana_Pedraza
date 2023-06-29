@@ -18,6 +18,8 @@ public class ClientesController : Controller
         _contexto = contexto;
     }
 
+
+    //LISTADO DE CLIENTES
     public IActionResult Index()
     {
         return View();
