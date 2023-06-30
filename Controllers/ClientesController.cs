@@ -111,14 +111,14 @@ public class ClientesController : Controller
             }
             else
             {
-                if (eliminado == 0)
-                {
-                    clientes.Eliminado = false;
-                    _contexto.SaveChanges();
-                }
-                else
-                {
-                }
+                // if (eliminado == 0)
+                // {
+                //     clientes.Eliminado = false;
+                //     _contexto.SaveChanges();
+                // }
+                // else
+                // {
+                // }
             }
         }
 
@@ -127,30 +127,101 @@ public class ClientesController : Controller
 
 
 
-    public JsonResult DesahabilitarCliente(int clienteID, int eliminado)
+    // public JsonResult DesahabilitarCliente(int clienteID, int eliminado)
+    // {
+    //     int resultado = 0;
+    //     var cliente = _contexto.Clientes.Find(clienteID);
+    //     if (cliente != null)
+    //     {
+    //         if (eliminado == 0)
+    //         {
+    //             cliente.Eliminado = false;
+    //             _contexto.SaveChanges();
+    //         }
+    //         else
+    //         {
+    //             if (eliminado == 1)
+    //             {
+    //                 cliente.Eliminado = true;
+    //                 _contexto.SaveChanges();
+    //             }
+    //         }
+    //     }
+
+    //     resultado = 1;
+
+    //     return Json(resultado);
+    // }
+
+    // public JsonResult DesahabilitarCliente(int clienteID, int eliminado)
+    // {
+    //     int resultado = 0;
+    //     // SE BUSCA EL ID DE LA CATEGORIA EN EL CONTEXTO
+    //     var clientes = _contexto.Clientes.Find(clienteID);
+    //     if (clientes != null)
+    //     {
+    //         if (eliminado == 0)
+    //         {
+    //             clientes.Eliminado = false;
+    //             _contexto.SaveChanges();
+    //         }
+    //         else
+    //         {
+    //             // NO PUEDE ELIMINAR RUBRO SI TIENE SUBRUBROS ACTIVOS
+    //             // var cantidadSubCategoria = (from a in _contexto.SubCategorias where a.CategoriaID == CategoriaID && a.Eliminado == false select a).Count();
+    //             // if (cantidadSubCategoria == 0)
+    //             // {
+    //             //     categoria.Eliminado = true;
+    //             //     _contexto.SaveChanges();
+    //             // }
+    //             // else
+    //             // {
+
+    //                 //     resultado = 1;
+    //                 // }
+
+    //             }
+    //         }
+
+    //         // resultado = 1;
+
+    //         return Json(resultado);
+    //     }
+
+    public JsonResult DesahabilitarCliente(int ClienteID, int Eliminado)
     {
-        int resultado = 0;
-        var cliente = _contexto.Clientes.Find(clienteID);
-        if (cliente != null)
+        // int resultado = 0;
+        // SE BUSCA EL ID DE LA CATEGORIA EN EL CONTEXTO
+        var clientes = _contexto.Clientes.Find(ClienteID);
+        if (clientes != null)
         {
-            if (eliminado == 0)
+            if (Eliminado == 1)
             {
-                cliente.Eliminado = false;
+                clientes.Eliminado = true;
                 _contexto.SaveChanges();
             }
             else
             {
-                if (eliminado == 1)
-                {
-                    cliente.Eliminado = true;
-                    _contexto.SaveChanges();
-                }
+                // resultado = 1;
+                // NO PUEDE ELIMINAR RUBRO SI TIENE SUBRUBROS ACTIVOS
+                // var cantidadSubCategoria = (from a in _contexto.Productos where a.ProductoID == clienteID && a.Eliminado == false select a).Count();
+                // if (cantidadSubCategoria == 0)
+                // {
+                //     clientes.Eliminado = true;
+                //     _contexto.SaveChanges();
+                // }
+                // else
+                // {
+
+                //     resultado = 1;
+                // }
+
             }
         }
 
-        resultado = 1;
+        // resultado = 1;
 
-        return Json(resultado);
+        return Json(Eliminado);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

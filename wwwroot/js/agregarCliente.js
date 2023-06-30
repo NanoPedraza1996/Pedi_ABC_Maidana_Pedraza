@@ -22,17 +22,17 @@ function BuscarClientes() {
                 let botonDesahabilitar = '';
                 let botones = '<button type="button" onclick="BuscarCliente(' + cliente.clienteID + ')" class="btn btn-primary btn-sm" style="margin-right:5px" onkeyup="this.value = this.value.toUpperCase()">Editar</button>' +
                 '<button type="button" onclick="EliminarCliente(' + cliente.clienteID + ')" class="btn btn-danger btn-sm" style="margin-right:5px">Eliminar</button>' +
-                '<button type="button" onclick="DesahabilitarCliente(' + cliente.clienteID + ',1)" class="btn btn-danger btn-sm">Desahabilitar</button>';
+                '<button type="button" onclick="DesahabilitarCliente(' + cliente.clienteID + ',1)" class="btn btn-primary btn-sm">Desahabilitar</button>';
                 //DEFINE SI ESTA ELIMINADA
                 if (cliente.eliminar) {
                     botonDesahabilitar = 'table-danger';
-                    botones = '<button type="button" onclick="DesahabilitarCliente(' + cliente.clienteID + ',0)" class="btn btn-warning btn-sm">Activar</button>';
+                    botones = '<button type="button" onclick="DesahabilitarCliente(' + cliente.clienteID + ',0)" class="btn btn-primary btn-sm">Activar</button>';
                 }
                 
-                $("#tbody-Clientes").append('<tr class=' + botonDesahabilitar + ' "tr">' 
+                $("#tbody-Clientes").append('<tr class=' + botonDesahabilitar + '>' 
                 + '<td>' + cliente.nombreApellido + '</td>' 
                 + '<td>' + cliente.direccion + '</td>' 
-                + '<td>' + cliente.Telefono + '</td>'
+                + '<td>' + cliente.telefono + '</td>'
                 + '<td class="text-center">' + botones + '</td>' + '</tr>');
            
           
@@ -156,7 +156,7 @@ function EliminarCliente(clienteID, eliminado) {
         url: '../../Clientes/EliminarCliente',
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
-        data: { ClienteID: clienteID, Eliminado: eliminado },
+        data: { clienteID: clienteID, eliminado: eliminado },
         // especifica si será una petición POST o GET
         type: 'POST',
         // el tipo de información que se espera de respuesta
@@ -188,7 +188,7 @@ function DesahabilitarCliente(clienteID, eliminado) {
         url: '../../Clientes/DesahabilitarCliente',
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
-        data: { ClienteID: clienteID, Eliminado: eliminado },
+        data: { clienteID: clienteID, eliminado: eliminado },
         // especifica si será una petición POST o GET
         type: 'POST',
         // el tipo de información que se espera de respuesta
