@@ -1,38 +1,55 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ProyectoFinal.Models;
+namespace Pedi_ABC.Models;
 
 public class Promocion
 {
     [Key]
     public int PromocionID { get; set; }
 
+
+    [Display(Name = "Nombre De La Promocion")]
+    [Required(ErrorMessage = "El Nombre De La Promocion es Obligatorio.")]
     public string? Nombre { get; set; }
 
+
+    [Display(Name = "Descripcion De La Promocion")]
+    [Required(ErrorMessage = "La Descripcion De La Promocion es Obligatorio.")]
     public string? Descripcion { get; set; }
 
-    public string? Precio { get; set; }
 
-    public string? Cantidad { get; set; }
+    [Display(Name = "Precio De La Promocion")]
+    [Required(ErrorMessage = "El Precio De La Promocion es Obligatorio.")]
+    public decimal Precio { get; set; }
 
-    public byte[]? Foto { get; set; }
-    public string? TipoDeImagen { get; set; }
-    public string? NombreDeImagen { get; set; }
 
-    public Disponibilidad Disponibles { get; set; }
-    
+    [Display(Name = "Cantidad De La Promocion")]
+    [Required(ErrorMessage = "La Cantidad De La Promocion es Obligatorio.")]
+    public decimal Cantidad { get; set; }
+
+
+
+    [Display(Name = "Foto")]
+    public byte[]? Imagen { get; set; }
+    public string? TipoImagen { get; set; }
+    public string? NombreImagen { get; set; }
+
+
+
+    [Display(Name = "Disponibilidad Del Producto")]
+    [Required(ErrorMessage = "La Disponibilidad Del Producto es Obligatorio.")]
+    public Disponible Disponibilidad { get; set; }
+
     public bool Eliminado { get; set; }
+
+
+    [NotMapped]
+    public string? ImagenBase64  { get; set; }
 
 
     // public virtual ICollection<Pedido>? Pedidos { get; set; }
 
     // public virtual ICollection<DetallePedido>? DetallePedidos { get; set; }
-}
 
-
-
-public enum Disponibilidad 
-{
-    Disponible ,
-    NoDisponible
 }

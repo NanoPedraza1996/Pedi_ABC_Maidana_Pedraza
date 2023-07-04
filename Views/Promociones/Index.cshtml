@@ -3,29 +3,96 @@
 }
 
 <body>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-  AGREGAR
-</button>
+    <!-- Modal data-backdrop="static" data-keyboard="false"-->
+    <div class="modal fade" id="ModalPromociones" tabindex="-1" aria-labelledby="staticBackdropLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Agregar Promocion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="files" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <input type="hidden" name="PromocionID" id="PromocionID" value="0" />
+                    <div>
+                        <label class="control-label">Nombre</label>
+                        <input type="text" class="form-control" style="text-transform: uppercase;" id="Nombre"
+                            name="Nombre" />
+                        <span class="text-danger" id="texto-error"></span>
+                    </div>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Agregar Promocion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar Promocion</button>
-      </div>
+                    <div>
+                        <label class="control-label">Descripcion</label>
+                        <input type="text" class="form-control" style="text-transform: uppercase;" id="Descripcion"
+                            name="Descripcion" />
+                        <span class="text-danger" id="texto-error"></span>
+                    </div>
+
+                    <div>
+                        <label class="control-label">Precio</label>
+                        <input type="text" class="form-control" style="text-transform: uppercase;" id="Precio"
+                            name="Precio" />
+                        <span class="text-danger" id="texto-error"></span>
+                    </div>
+
+                    <div>
+                        <label class="control-label">Cantidad</label>
+                        <input type="text" class="form-control" style="text-transform: uppercase;" id="Cantidad"
+                            name="Cantidad" />
+                        <span class="text-danger" id="texto-error"></span>
+                    </div>
+
+                    <div>
+                        <label class="control-label">Imagen</label>
+                        <input type='file' class="form-control" name="Imagen" id='Imagen'>
+                    </div>
+
+                    <div>
+                        <label class="control-label">Disponibilidad</label>
+                        <input type="text" class="form-control" style="text-transform: uppercase;" id="Cantidad"
+                            name="Cantidad" />
+                        <span class="text-danger" id="texto-error"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" onclick="GuardarPromociones()" class="btn btn-primary">Guardar
+                        Producto</button>
+                </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+    <div>
+        <h1 class="display-4">Promociones</h1>
+        <!-- Button trigger modal -->
+        <div class="mb-2">
+            <button type="button" onclick="VaciarFormulario()" class="btn btn-primary" data-toggle="modal"
+                data-target="#ModalPromociones">
+                Agregar
+            </button>
+        </div>
+        <!-- Button trigger modal -->
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Imagen</th>
+                    <th>Disponibilidad</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-Promociones">
+            </tbody>
+        </table>
+    </div>
 </body>
+
+@section Scripts {
+    <script src="~/js/agregarPromocion.js"></script>
+}

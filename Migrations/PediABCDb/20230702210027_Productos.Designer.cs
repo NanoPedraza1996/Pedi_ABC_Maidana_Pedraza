@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pedi_ABC.Data;
 
@@ -11,9 +12,10 @@ using Pedi_ABC.Data;
 namespace Pedi_ABC.Migrations.PediABCDb
 {
     [DbContext(typeof(PediABCDbContext))]
-    partial class PediABCDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230702210027_Productos")]
+    partial class Productos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,48 +64,6 @@ namespace Pedi_ABC.Migrations.PediABCDb
                     b.HasKey("ProductoID");
 
                     b.ToTable("Productos");
-                });
-
-            modelBuilder.Entity("Pedi_ABC.Models.Promocion", b =>
-                {
-                    b.Property<int>("PromocionID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PromocionID"), 1L, 1);
-
-                    b.Property<decimal>("Cantidad")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Disponibilidad")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Eliminado")
-                        .HasColumnType("bit");
-
-                    b.Property<byte[]>("Imagen")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NombreImagen")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("TipoImagen")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PromocionID");
-
-                    b.ToTable("Promociones");
                 });
 #pragma warning restore 612, 618
         }
