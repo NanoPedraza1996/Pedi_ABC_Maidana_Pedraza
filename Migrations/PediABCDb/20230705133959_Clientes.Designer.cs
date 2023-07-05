@@ -12,8 +12,8 @@ using Pedi_ABC.Data;
 namespace Pedi_ABC.Migrations.PediABCDb
 {
     [DbContext(typeof(PediABCDbContext))]
-    [Migration("20230622213144_Cliente_Producto_Promocion")]
-    partial class Cliente_Producto_Promocion
+    [Migration("20230705133959_Clientes")]
+    partial class Clientes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace Pedi_ABC.Migrations.PediABCDb
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("ProyectoFinal.Models.Cliente", b =>
+            modelBuilder.Entity("Pedi_ABC.Models.Cliente", b =>
                 {
                     b.Property<int>("ClienteID")
                         .ValueGeneratedOnAdd()
@@ -33,15 +33,18 @@ namespace Pedi_ABC.Migrations.PediABCDb
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClienteID"), 1L, 1);
 
                     b.Property<string>("Direccion")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Eliminado")
                         .HasColumnType("bit");
 
                     b.Property<string>("NombreApellido")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Telefono")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ClienteID");
@@ -49,7 +52,7 @@ namespace Pedi_ABC.Migrations.PediABCDb
                     b.ToTable("Clientes");
                 });
 
-            modelBuilder.Entity("ProyectoFinal.Models.Producto", b =>
+            modelBuilder.Entity("Pedi_ABC.Models.Producto", b =>
                 {
                     b.Property<int>("ProductoID")
                         .ValueGeneratedOnAdd()
@@ -57,31 +60,33 @@ namespace Pedi_ABC.Migrations.PediABCDb
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductoID"), 1L, 1);
 
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Cantidad")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Descripcion")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Disponible")
+                    b.Property<int>("Disponibilidad")
                         .HasColumnType("int");
 
                     b.Property<bool>("Eliminado")
                         .HasColumnType("bit");
 
-                    b.Property<byte[]>("Foto")
+                    b.Property<byte[]>("Imagen")
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NombreDeImagen")
+                    b.Property<string>("NombreImagen")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Precio")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("TipoDeImagen")
+                    b.Property<string>("TipoImagen")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ProductoID");
@@ -89,7 +94,7 @@ namespace Pedi_ABC.Migrations.PediABCDb
                     b.ToTable("Productos");
                 });
 
-            modelBuilder.Entity("ProyectoFinal.Models.Promocion", b =>
+            modelBuilder.Entity("Pedi_ABC.Models.Promocion", b =>
                 {
                     b.Property<int>("PromocionID")
                         .ValueGeneratedOnAdd()
@@ -97,31 +102,33 @@ namespace Pedi_ABC.Migrations.PediABCDb
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PromocionID"), 1L, 1);
 
-                    b.Property<string>("Cantidad")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("Cantidad")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Descripcion")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Disponibles")
+                    b.Property<int>("Disponibilidad")
                         .HasColumnType("int");
 
                     b.Property<bool>("Eliminado")
                         .HasColumnType("bit");
 
-                    b.Property<byte[]>("Foto")
+                    b.Property<byte[]>("Imagen")
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NombreDeImagen")
+                    b.Property<string>("NombreImagen")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Precio")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("TipoDeImagen")
+                    b.Property<string>("TipoImagen")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PromocionID");

@@ -16,9 +16,9 @@
 
 
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
-/* 
-h1 {
+/* @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700); */
+
+/* h1 {
   font-size: 5em;
   font-weight: 1000;
   line-height: 1em;
@@ -26,12 +26,12 @@ h1 {
   color: #ff0000;
   font-family: Arial, Helvetica, sans-serif;
 
-} */
+}
 
-.titulostabla{
-  
-  -webkit-box-shadow: 22px 25px 65px 7px rgba(0,0,0,0.61);
-  -moz-box-shadow: 22px 25px 65px 7px rgba(0,0,0,0.61);
+.titulostabla {
+
+  -webkit-box-shadow: 22px 25px 65px 7px rgba(0, 0, 0, 0.61);
+  -moz-box-shadow: 22px 25px 65px 7px rgba(0, 0, 0, 0.61);
   box-shadow: 10px 15px 35px 7px rgba(175, 0, 0, 0.205);
   font-size: 5em;
   font-weight: 1000;
@@ -50,7 +50,7 @@ h1 {
 
 }
 
-.letrastabla{
+.letrastabla {
   text-align: center;
 }
 
@@ -105,12 +105,12 @@ h2 a {
   padding-left: 2%;
 }
 
-/* Background-color of the odd rows */
+
 .container .tr:nth-child(odd) {
   background-color: #5c626e;
 }
 
-/* Background-color of the even rows */
+
 .container .tr:nth-child(even) {
   background-color: #373772;
 }
@@ -181,7 +181,7 @@ h2 a {
   -webkit-text-stroke: 2px black;
 }
 
-/* LOGIN */
+
 
 .paddingtop {
   padding-top: 2%;
@@ -222,7 +222,11 @@ form label {
 .letraboton {
   font-size: 2em;
   color: yellowgreen;
-}
+} */
+
+
+
+
 
 
 

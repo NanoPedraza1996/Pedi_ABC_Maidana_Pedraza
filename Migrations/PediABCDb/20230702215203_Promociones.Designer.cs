@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pedi_ABC.Data;
 
@@ -11,9 +12,10 @@ using Pedi_ABC.Data;
 namespace Pedi_ABC.Migrations.PediABCDb
 {
     [DbContext(typeof(PediABCDbContext))]
-    partial class PediABCDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230702215203_Promociones")]
+    partial class Promociones
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,34 +23,6 @@ namespace Pedi_ABC.Migrations.PediABCDb
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("Pedi_ABC.Models.Cliente", b =>
-                {
-                    b.Property<int>("ClienteID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClienteID"), 1L, 1);
-
-                    b.Property<string>("Direccion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Eliminado")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("NombreApellido")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Telefono")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ClienteID");
-
-                    b.ToTable("Clientes");
-                });
 
             modelBuilder.Entity("Pedi_ABC.Models.Producto", b =>
                 {
