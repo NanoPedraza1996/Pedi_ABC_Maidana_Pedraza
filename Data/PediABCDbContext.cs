@@ -12,4 +12,6 @@ public class PediABCDbContext : DbContext
     public DbSet<Producto> Productos { get; set; }
 
     public DbSet<Promocion> Promociones { get; set; }
+
+    public DbSet<Cliente> Clientes { get; set; }
 }

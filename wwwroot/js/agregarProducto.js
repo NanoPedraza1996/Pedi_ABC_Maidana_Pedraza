@@ -273,25 +273,25 @@ $("form#files").submit(function () {
         guardar = false;
     }
 
-    if (guardar) {
-        $.ajax({
-            url: '../../Productos/GuardarProductos',
-            type: 'POST',
-            data: formData,
-            async: false,
-            success: function (resultado) {
-                if (resultado) {
-                    $("#ModalProductos").modal("hide");
-                    BuscarProductos();
-                }
-                else {
-                    $("#texto-error").text("Existe una Descripcion Con El mismo Nombre.");
-                }
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
-    }
-    return false;
+    // if (guardar) {
+    //     $.ajax({
+    //         url: '../../Productos/GuardarProductos',
+    //         type: 'POST',
+    //         data: formData,
+    //         async: false,
+    //         success: function (resultado) {
+    //             if (resultado) {
+    //                 $("#ModalProductos").modal("hide");
+    //                 BuscarProductos();
+    //             }
+    //             else {
+    //                 $("#texto-error").text("Existe una Descripcion Con El mismo Nombre.");
+    //             }
+    //         },
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false
+    //     });
+    // }
+    // return false;
 });
