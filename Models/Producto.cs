@@ -46,9 +46,12 @@ public class Producto
     public bool Eliminado { get; set; }
 
 
-    // public virtual ICollection<DetallePedidoTemporal>? DetallePedidoTemporales { get; set; }
+    public bool EstaPedido { get; set; }
 
-    // public virtual ICollection<DetallePedido>? DetallePedidos { get; set; }
+    
+
+
+    public virtual ICollection<DetallePedido>? DetallePedidos { get; set; }
 
 
     [NotMapped]

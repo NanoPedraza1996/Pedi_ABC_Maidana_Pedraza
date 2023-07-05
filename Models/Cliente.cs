@@ -24,4 +24,8 @@ public class Cliente
 
 
     public bool Eliminado { get; set; }
+
+
+    public virtual ICollection<Pedido>? Pedidos { get; set; }
+
 }

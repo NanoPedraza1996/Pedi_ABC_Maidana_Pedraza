@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pedi_ABC.Data;
 
@@ -11,9 +12,10 @@ using Pedi_ABC.Data;
 namespace Pedi_ABC.Migrations.PediABCDb
 {
     [DbContext(typeof(PediABCDbContext))]
-    partial class PediABCDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230705232554_PedidosDetalleTemporal")]
+    partial class PedidosDetalleTemporal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

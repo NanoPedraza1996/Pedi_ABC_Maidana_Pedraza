@@ -221,36 +221,36 @@ function DesahabilitarPromociones(promocionID, eliminado) {
 
 }
 
-$("form#files").submit(function () {
-    $("#texto-error").text("");
-    var formData = new FormData($(this)[0]);
-    let nombre1 = document.getElementById("Nombre").value;
+// $("form#files").submit(function () {
+//     $("#texto-error").text("");
+//     var formData = new FormData($(this)[0]);
+//     let nombre1 = document.getElementById("Nombre").value;
 
-    var guardar = true;
-    if (!nombre1) {
-        $("#texto-error").text("*Debe ingresar un Nombre");
-        guardar = false;
-    }
+//     var guardar = true;
+//     if (!nombre1) {
+//         $("#texto-error").text("*Debe ingresar un Nombre");
+//         guardar = false;
+//     }
 
-    if (guardar) {
-        $.ajax({
-            url: '../../Promociones/GuardarPromociones',
-            type: 'POST',
-            data: formData,
-            async: false,
-            success: function (resultado) {
-                if (resultado) {
-                    $("#ModalPromociones").modal("hide");
-                    BuscarPromociones();
-                }
-                else {
-                    $("#texto-error").text("Existe una Descripcion Con El mismo Nombre.");
-                }
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
-    }
-    return false;
-});
+//     if (guardar) {
+//         $.ajax({
+//             url: '../../Promociones/GuardarPromociones',
+//             type: 'POST',
+//             data: formData,
+//             async: false,
+//             success: function (resultado) {
+//                 if (resultado) {
+//                     $("#ModalPromociones").modal("hide");
+//                     BuscarPromociones();
+//                 }
+//                 else {
+//                     $("#texto-error").text("Existe una Descripcion Con El mismo Nombre.");
+//                 }
+//             },
+//             cache: false,
+//             contentType: false,
+//             processData: false
+//         });
+//     }
+//     return false;
+// });
