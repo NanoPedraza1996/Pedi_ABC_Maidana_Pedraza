@@ -16,7 +16,7 @@
 
 
 
-/* @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700); */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700); */
 
 /* h1 {
   font-size: 5em;
@@ -26,7 +26,7 @@
   color: #ff0000;
   font-family: Arial, Helvetica, sans-serif;
 
-}
+} */
 
 .titulostabla {
 
@@ -205,11 +205,10 @@ h2 a {
 }
 
 form {
-  width: 1000px;
+  width: 500px;
   padding: 10%;
-  border-radius: 20px;
   margin: auto;
-  background-color: #505050;
+  background-color: #bbbbbb;
 }
 
 form label {
@@ -222,9 +221,7 @@ form label {
 .letraboton {
   font-size: 2em;
   color: yellowgreen;
-} */
-
-
+} 
 
 
 
@@ -266,7 +263,7 @@ form label {
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
 
 * {
-  font-family: Open Sans;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 section {
